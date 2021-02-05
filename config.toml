@@ -1,0 +1,5 @@
+baseURL = "http://technically.works/"
+languageCode = "en-us"
+title = "Technically a blog"
+theme = "hugo-kiera"
+
