@@ -32,5 +32,5 @@ jobs:
           ARGS: "-avzr --delete"
           SOURCE: "public/"
           REMOTE_HOST: "technically.works"
-          REMOTE_USER: "root"
-          TARGET: "/var/www/html/deployment/"
+          REMOTE_USER: ${{ secrets.USER_NAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
