@@ -1,0 +1,36 @@
+name: CD
+
+on:
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0  
+
+      - name: hugo setup
+        uses: peaceiris/actions-hugo@v2.4.13
+        with:
+          hugo-version: '0.80.0' 
+          
+      - name: build
+        run: hugo
+        
+      - name: deploy
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
+          ARGS: "-avzr --delete"
+          SOURCE: "public/"
+          REMOTE_HOST: "technically.works"
+          REMOTE_USER: ${{ secrets.USER_NAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
