@@ -26,11 +26,11 @@ jobs:
         run: hugo
         
       - name: deploy
-        uses: burnett01/rsync-deployments@4.1
-        with:
-          switches: -avzr --delete
-          path: .public/
-          remote_path: /var/www/html/technically.works/deployed
-          remote_host: technically.works
-          remote_user: root
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-avzr --delete"
+          SOURCE: ".public/"
+          REMOTE_HOST: "technically.works"
+          REMOTE_USER: "root"
+          TARGET: "/var/www/html/deployment/"
