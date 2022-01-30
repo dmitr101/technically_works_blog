@@ -17,17 +17,13 @@ jobs:
           submodules: true
           fetch-depth: 0  
       
-      - name: theme update
-        run: |
-          git submodule update --rebase --remote
-      
       - name: hugo setup
         uses: peaceiris/actions-hugo@v2.5.0
         with:
           hugo-version: '0.92.1' 
           
       - name: build
-        run: hugo -D
+        run: hugo
         
       - name: deploy
         uses: easingthemes/ssh-deploy@v2.1.5
