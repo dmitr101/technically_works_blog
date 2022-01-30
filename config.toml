@@ -1,5 +1,5 @@
 title = "Technically a blog"
-baseURL = "http://technically.works/"
+baseURL = "/"
 languageCode = "en-us"
 canonifyurls = true
 
