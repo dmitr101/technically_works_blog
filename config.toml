@@ -1,5 +1,25 @@
+title = "Technically a blog"
 baseURL = "http://technically.works/"
 languageCode = "en-us"
-title = "Technically a blog"
+canonifyurls = true
+
 theme = "hugo-kiera"
 
+menu = "main"
+meta = "false"
+
+paginate = 5
+summaryLength = 20
+enableEmoji = true
+pygmentsCodeFences = true
+
+[author]
+name = "Dmytro Shynkar"
+email = "dmytroshynkar@gmail.com"
+github = "dmitr101"
+twitter = "dimashynkar"
+linkedin = "dmytro-shynkar-449148135"
+
+[params]
+tagline = "Exploring the technicalities of things around me"
+disableDarkModeCSS = false
