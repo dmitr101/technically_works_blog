@@ -176,13 +176,13 @@ class Decorator : public T
 std::unique_ptr<Interface> Decorate(std::unique_ptr<Interface> original)
 {
 
-    if (auto concrete = dynamic_cast<Concrete1&>(*original))
+    if (auto concrete = dynamic_cast<Concrete1*>(original.get()))
     {
-        return std::make_unique<Decorator<Concrete1>>(std::move(*original));
+        return std::make_unique<Decorator<Concrete1>>(std::move(*concrete));
     }
-    else if (auto concrete = dynamic_cast<Concrete2&>(*original))
+    else if (auto concrete = dynamic_cast<Concrete2*>(original.get()))
     {
-        return std::make_unique<Decorator<Concrete2>>(std::move(*original));
+        return std::make_unique<Decorator<Concrete2>>(std::move(*concrete));
     }
     else
     {
